@@ -9,6 +9,8 @@ if(NOT CMAKE_DEBUG_POSTFIX)
    set(CMAKE_DEBUG_POSTFIX d)
 endif()
 
+include(CTest)
+
 add_subdirectory(extern)
 add_subdirectory(src)
 add_subdirectory(tests)

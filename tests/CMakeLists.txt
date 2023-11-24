@@ -23,7 +23,6 @@ PROPERTIES
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 
 list(APPEND CMAKE_MODULE_PATH ${FETCHCONTENT_BASE_DIR}/catch2-src/extras)
-include(CTest)
 include(Catch)
 
 catch_discover_tests(tests)
