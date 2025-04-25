@@ -1,10 +1,36 @@
-#pragma once
+#include "IRule.h"
 
-#include <bitset>
-#include <cstdint>
-#include <cstdint>
+#include <vector>
+namespace griddler
+{
+    /** Implementation of the IRule interface. */
+    class Rule : public IRule
+    {
+    public:
+        /** Create rule and set width. */
+        explicit Rule (uint8_t width);
+        /** Default destructor. */
+        ~Rule ();
 
+        /** Add rule. */
+        void addRule (uint8_t rule);
+        /** {@inheritDoc} */
+        virtual uint64_t getSize () const override;
+        /** {@inheritDoc} */
+        virtual uint64_t getValue (uint64_t index) const override;
+        /** {@inheritDoc} */
+        virtual uint8_t getWidth () const override;
+    private:
+        /** Calculate binomial coefficient. */
+        uint64_t getComb (uint8_t n, uint8_t k) const;
 
-uint64_t fibonacci (uint64_t number);
-
-uint32_t factorial (uint32_t number);
+        /** Width of the rule. */
+        uint8_t m_width;
+        /** Count of used rules. */
+        uint8_t m_count;
+        /** Sum of the rules. */
+        uint8_t m_sum;
+        /** Collection of rules. */
+        std::vector<uint8_t> m_rules;
+    };
+}
